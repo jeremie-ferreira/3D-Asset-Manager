@@ -1,0 +1,83 @@
+.scrollable-content {
+  max-height: calc(100vh - 0px);
+  overflow-y: auto;
+}
+
+/* Hero section styles */
+.hero-section {
+  height: calc(100vh - 128px);
+  font-family: Open Sans, sans-serif;
+  padding: 64px;
+  background: linear-gradient(160deg, rgba(169,48,212,1) 0%, rgba(45,17,107,1) 50%, rgba(134,50,111,1) 100%);
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  color: white;
+  text-align: left;
+  padding: 20px;
+}
+
+.hero-title {
+  font-size: 3.5em;
+  font-weight: 300;
+  margin: 0.5em 0;
+}
+
+.hero-subtitle {
+  font-size: 18px;
+  margin: 0 0 40px;
+  font-weight: 400;
+  opacity: .7;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+button {
+  margin: 5px;
+}
+
+.row {
+  display: flex;
+  width: 100%; /* Ensure full width */
+  height: 100%;
+}
+
+.column {
+  flex: 1;
+  padding: 16px;
+  position: relative;
+  display: flex;
+  justify-content: center;  /* Center content horizontally */
+  align-items: center;  /* Center content vertically */
+  height: 100%;  /* Ensure it takes all available height */
+}
+
+app-model-viewer {
+  width: 100%;
+}
+
+/* Set explicit 50% width for columns */
+.column:first-child {
+  flex-basis: 50%;
+}
+
+.column:last-child {
+  flex-basis: 50%;
+}
+
+/* Responsive adjustment: Stack the columns on smaller screens */
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+  }
+  .hero {
+    height: auto;
+  }
+}

@@ -1,0 +1,81 @@
+.page-content {
+    font-family: Open Sans, sans-serif;
+    padding: 64px;
+    background: linear-gradient(.25turn, #a61473, #2bbed4);
+    background: rgb(169, 48, 212);
+    background: linear-gradient(160deg, rgba(169, 48, 212, 1) 0%, rgba(45, 17, 107, 1) 50%, rgba(134, 50, 111, 1) 100%);
+    
+}
+
+.scrollable-content {
+    height: calc(100vh - 128px);
+    overflow-y: auto;
+}
+
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+h2 {
+    text-align: center;
+}
+
+.error-message {
+    color: red;
+    font-size: 0.9em;
+}
+
+mat-card {
+    margin-top: 64px;
+    position: relative;
+    /* Allows z-index to work on mat-card if needed */
+    z-index: 1;
+    /* Ensure the card is above the background */
+    width: 400px;
+    /* Set a fixed width for the card */
+    max-width: 100%;
+    /* Make it responsive */
+}
+
+mat-card-content {
+    padding-top: 16px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column; /* Stack fields vertically */
+    gap: 16px; /* Space between fields */
+}
+
+.full-width {
+    width: 100%;
+}
+
+.card-container {
+    position: relative;
+  }
+  
+  .loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10; /* Ensure it's on top */
+  }
+  
+  .error-message {
+    color: red;
+    margin-top: 1rem;
+    font-size: 14px;
+  }

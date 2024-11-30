@@ -1,0 +1,46 @@
+@if(showNav) {
+<mat-toolbar color="primary" class="top-navbar">
+  <button mat-icon-button (click)="sidenav.toggle()" *ngIf="!isLargeScreen">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="logo">3D Asset Manager</span>
+
+  <div class="search-bar" *ngIf="isSearchRoute">
+    <input matInput placeholder="Search" #searchTerm (keydown.enter)="onSearch(searchTerm.value)" />
+    <button mat-icon-button (click)="onSearch(searchTerm.value)"><mat-icon>search</mat-icon></button>
+  </div>
+
+  <div class="top-navbar-icons">
+    <button mat-icon-button><mat-icon>notifications</mat-icon></button>
+
+    <button [matMenuTriggerFor]="profileMenu" class="profile-button">
+      <img [src]="pictureUrl" alt="Profile Picture" class="profile-picture"/>
+    </button>
+
+    <mat-menu #profileMenu="matMenu" class="profile-menu">
+      <button mat-menu-item routerLink="/edit/profile">View Profile</button>
+      <button mat-menu-item (click)="onSettings()">Settings</button>
+      <button mat-menu-item (click)="onLogout()">Logout</button>
+    </mat-menu>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container class="main-container">
+
+  <mat-sidenav #sidenav mode="side" class="sidenav" [opened]="isLargeScreen">
+    <div class="sidenav-content">
+      <button mat-button routerLink="/search" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><mat-icon>explore</mat-icon>Explore</button>
+      <button mat-button routerLink="/asset/new/edit" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><mat-icon>view_in_ar</mat-icon>New Asset</button>
+      <button mat-button routerLink="/edit/profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><mat-icon>badge</mat-icon>Profile</button>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+      <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>
+}
+@else {
+  <router-outlet />
+}

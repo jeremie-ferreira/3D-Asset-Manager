@@ -1,0 +1,24 @@
+# Node.js (Frontend)
+frontend/node_modules/
+frontend/dist/
+
+# Java Backend
+backend/assets-manager/target/
+backend/assets-manager/.project
+backend/assets-manager/.classpath
+backend/assets-manager/.factorypath
+backend/assets-manager/.settings/
+
+# Exclude metadata folder in backend
+backend/.metadata/
+
+#Exclude storage folder
+storage/
+
+# General
+.vscode/
+.angular/
+.idea/
+.DS_Store
+Thumbs.db
+*.log

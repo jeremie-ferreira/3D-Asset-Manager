@@ -1,0 +1,39 @@
+
+.page-content {
+    display: flex;
+    justify-content: center;
+    padding: 64px;
+}
+
+.profile-picture img {
+    border-radius: 50%;
+    border: 3px solid #558ac0;
+    width: 200px;
+}
+
+.upload-button {
+    top: -30px;
+    left: -30px;
+    background-color: #005cbb;
+    color: #fff
+}
+
+mat-card {
+    max-width: 600px;
+}
+
+mat-card-content {
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.profile-container {
+    margin-bottom: 16px;
+}
+
+mat-card-content mat-form-field {
+    width: 100%;
+}

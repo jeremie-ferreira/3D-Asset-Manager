@@ -1,0 +1,100 @@
+<div class="scrollable-content">
+<mat-vertical-stepper linear #stepper>
+  <mat-step [stepControl]="fileFormGroup">
+    <form [formGroup]="fileFormGroup">
+      <ng-template matStepLabel>Main File</ng-template>
+
+      <div class="main-file-buttons">
+        <div *ngIf="mainFormGroup.get('fileFormGroup')?.invalid && mainFormGroup.get('fileFormGroup')?.touched" class="error-message">Please upload a main file and a thumbnail</div>
+        <button mat-raised-button (click)="fileInput.click()">
+          <mat-icon>upload</mat-icon>Select main file
+        </button>
+        <input #fileInput type="file" hidden (change)="onFileSelected($event)" />
+
+        <button mat-button (click)="thumbnailFromPreview()">
+          <mat-icon>camera</mat-icon>Thumbnail from view
+        </button>
+
+        <button mat-button (click)="thumbFileInput.click()">
+          <mat-icon>preview</mat-icon>Thumbnail from file
+        </button>
+        <input #thumbFileInput type="file" hidden (change)="onThumbFileSelected($event)" />
+
+      </div>
+
+      <app-model-viewer class="model-image"></app-model-viewer>
+
+      <button mat-button matStepperNext (click)="markTouched('fileFormGroup')">Next</button>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="additionalFilesFormGroup">
+    <form [formGroup]="additionalFilesFormGroup">
+      <ng-template matStepLabel>Additionnal Files</ng-template>
+      <div class="tab-content">
+        <button mat-raised-button color="primary" (click)="additionalFileInput.click()">
+          <mat-icon>description</mat-icon>Add file
+        </button>
+        <input #additionalFileInput type="file" hidden (change)="addAdditionalFile($event)" />
+
+        <mat-action-list class="files">
+          <div mat-subheader></div>
+          <button mat-list-item *ngFor="let file of asset.additionalFiles; let i = index">
+            <mat-icon matListItemIcon>description</mat-icon>
+            {{file.name}}
+            <div matListItemMeta class="action-buttons">
+              <button mat-icon-button color="warn" (click)="removeFile(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </button>
+        </mat-action-list>
+        <button mat-button matStepperPrevious>Previous</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="infoFormGroup">
+    <form [formGroup]="infoFormGroup">
+      <ng-template matStepLabel>Asset info</ng-template>
+
+      <div class="form-fields">
+        <mat-form-field>
+          <mat-label>Asset Name</mat-label>
+          <input matInput formControlName="nameControl" required>
+          @if (infoFormGroup.get('nameControl')?.hasError('required')) {
+          <mat-error>Name is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="descriptionControl"></textarea>
+          @if (infoFormGroup.get('descriptionControl')?.hasError('required')) {
+            <mat-error>Description is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Category</mat-label>
+          <mat-select formControlName="categoryControl" [compareWith]="compareById">
+            <mat-option *ngFor="let category of categories" [value]="category">
+              {{ category.label }}
+            </mat-option>
+          </mat-select>
+          @if (infoFormGroup.get('categoryControl')?.hasError('required')) {
+            <mat-error>Category is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+
+        <app-tag-selector [formGroup]="infoFormGroup" [tagsArray]="tagsArray" [currentTagControl]="currentTagControl" [allowCustomTags]="true"></app-tag-selector>
+
+      </div>
+
+      <button mat-button matStepperPrevious>Previous</button>
+      <button mat-button (click)="onSave()">Save</button>
+    </form>
+  </mat-step>
+</mat-vertical-stepper>
+</div>

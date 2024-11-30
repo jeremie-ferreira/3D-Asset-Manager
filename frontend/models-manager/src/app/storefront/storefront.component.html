@@ -1,0 +1,21 @@
+<div class="scrollable-content">
+<section class="hero-section">
+    <div class="row">
+        <div class="column">
+            <div class="hero">
+                <h1 class="hero-title">The best 3D model browser for your team</h1>
+                <p class="hero-subtitle">Organize your 3D assets, optimize the search and archiving for your team. Accelerate your
+                    projects.</p>
+                <div class="hero-buttons">
+                    <button mat-raised-button color="accent" routerLink="login">Login</button>
+                    <button mat-raised-button color="accent">Join</button>
+                    <button mat-raised-button color="primary">See Plans</button>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+             <app-model-viewer [transparentBackground]="true" [autoRotation]="true"></app-model-viewer>
+        </div>
+    </div>
+</section>
+</div>

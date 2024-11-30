@@ -1,0 +1,55 @@
+/* You can add global styles to this file, and also import other style files */
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.page-content {
+    /* background-color: #ebebeb; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-size: cover;
+}
+
+.mat-mdc-menu-panel {
+    background-color: #fff !important;
+  }
+  
+.fixed-bottom-right {
+    position: fixed;
+    bottom: 16px;
+    right: 16px; 
+    z-index: 1000;
+  }
+  
+.flex-gap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.margin-16 {
+  margin: 16px 0;
+}
+
+.padding-16 {
+  padding: 16px;
+}
+
+.scrollable-content {
+  max-height: calc(100vh - 64px);
+  overflow-y: auto;
+}
+
+h2.app-title {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 400;
+  margin: 24px 0 8px!important;
+  line-height: 100%;
+}
+
+p {
+  font-size: 16px;
+  line-height: 28px;
+}

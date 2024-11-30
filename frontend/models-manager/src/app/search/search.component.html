@@ -1,0 +1,40 @@
+<div class="scrollable-content padding-16" (scroll)="onScroll($event)">
+  <div class="search-container">
+    <div class="filters">
+      
+      <app-tag-selector [formGroup]="searchFormGroup" [tagsArray]="tagsArray" [currentTagControl]="currentTagControl" [allowCustomTags]="true" (tagsChanged)="onTagsChanged()" style="width: 400px"></app-tag-selector>
+
+      <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select (selectionChange)="onCategoryChange($event)" [compareWith]="compareById" [(value)]="category">
+          <mat-option *ngFor="let category of categories" [value]="category">
+            {{ category.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Order</mat-label>
+        <mat-select (selectionChange)="onSortChange($event)" [(value)]="order">
+          <mat-option *ngFor="let option of sortOptions" [value]="option">
+            {{ option.label }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="results-grid">
+      <mat-card *ngFor="let asset of assets" class="result-card clickable-card" matRipple
+        (click)="goToDetails(asset.id)">
+        @if(asset.thumb !== undefined && asset.thumb.url !== undefined) {
+        <img mat-card-image [src]="asset.thumb.url" alt="Model Image" />
+        }
+        <mat-card-content class="result-card-content">
+          <div class="asset-title">{{ asset.name }}</div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+
+  <div style="height: 200px;"></div>
+</div>

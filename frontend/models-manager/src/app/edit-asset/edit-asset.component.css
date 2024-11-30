@@ -1,0 +1,42 @@
+.tab-content {
+  padding: 16px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.model-container {
+  display: flex;
+  max-width: 800px;
+  height: 600px;
+}
+
+.model-image {
+  display: block;
+  width: 512px;
+  
+}
+
+.main-file-buttons {
+  margin-bottom: 16px;
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+  padding: 16px 0;
+}
+
+.padding-16 {
+  padding: 16px;
+}
+
+.error-message {
+  background-color: #d32e2e;
+  color: #fff;
+  font-weight: 500;
+  padding: 8px 16px;
+  margin-top: 8px;
+}

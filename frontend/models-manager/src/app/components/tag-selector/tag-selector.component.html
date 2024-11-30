@@ -1,0 +1,20 @@
+<form [formGroup]="formGroup">
+    <mat-form-field class="tag-selector">
+        <mat-label>Tags</mat-label>
+        <mat-chip-grid #chipGrid aria-label="Tags selection">
+            <mat-chip-row *ngFor="let tagCtrl of tagsArray.controls; let i = index" (removed)="remove(tagCtrl.value)">
+                {{ tagCtrl.value.label }}
+                <button matChipRemove [attr.aria-label]="'remove ' + tagCtrl.value">
+                    <mat-icon>cancel</mat-icon>
+                </button>
+            </mat-chip-row>
+
+            <input formControlName="currentTagControl" placeholder="New Tag..." #tagInput [matChipInputFor]="chipGrid"
+                [matAutocomplete]="auto" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                (matChipInputTokenEnd)="add($event)" />
+        </mat-chip-grid>
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <mat-option *ngFor="let tag of filteredTags" [value]="tag">{{tag.label}}</mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</form>

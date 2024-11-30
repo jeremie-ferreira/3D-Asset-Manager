@@ -1,0 +1,72 @@
+<div class="scrollable-content">
+    <div class="details-page-container">
+        <div class="left-column">
+            <mat-card>
+                 <mat-card-content class="flex-gap">
+                    <div class="model-viewer">
+                        @if (!modelUrl) {
+                            <mat-spinner></mat-spinner>
+                        }
+                        <app-model-viewer class="model-image"></app-model-viewer>
+                    </div>
+                    <h2 class="app-title">Description</h2>
+                    <p style="white-space: pre-wrap;">
+                        {{ asset.description  }}
+                    </p>
+                    
+
+                    <div>
+                        <h2 class="app-title">Category</h2>
+                        <div>
+                            <button mat-button mat-raised-button [routerLink]="['/search']" [queryParams]="{category: asset.category.id}">{{ asset.category.label }}</button>
+                        </div>
+                        
+                    </div>
+
+                    <div>
+                        <h2 class="app-title">Tags</h2>
+                        <div class="tags-container">
+                            <button mat-button mat-raised-button *ngFor="let tag of asset.tags" [routerLink]="['/search']" [queryParams]="{tags: tag.id}">{{ tag.label }}</button>
+                        </div>
+                    </div>
+                 </mat-card-content>
+            </mat-card>
+
+        </div>
+
+        
+        <div class="right-column">
+            <mat-card class="author-info">
+                <mat-card-title class="filename">
+                    {{ asset? asset.name : ""}}
+                </mat-card-title>
+                
+                <mat-card-content>
+                    <div class="author-details">
+                        <img [src]="asset.author.profilePicture.url" alt="Author's avatar" class="author-avatar" />
+                        <div class="author-name">@if (asset) { {{asset.author.displayName}} }</div>
+                    </div>
+
+                    @if (asset) {
+                    <h2 class="app-title">Files</h2>
+                    <mat-action-list class="files">
+                        <button mat-list-item (click)="downloadFile(asset.mainFile)">
+                            <mat-icon matListItemIcon>description</mat-icon>
+                            {{ asset.mainFile.name }}
+                        </button>
+                        @for (file of asset.additionalFiles; track file) {
+                        <button mat-list-item (click)="downloadFile(file)">
+                            <mat-icon matListItemIcon>description</mat-icon>
+                            {{ file.name }}
+                        </button>
+                        }
+                    </mat-action-list>
+                    }
+
+                    <button mat-button mat-raised-button [routerLink]="['/asset/' + asset.id + '/edit']" class="margin-16">Edit</button>
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+    </div>
+</div>
